@@ -24,9 +24,9 @@ function setPage(){
 function setLink(platform){
     htmlLinkBtn = "";
     if(platform != ""){
-        htmlLinkBtn =  '<a href="https://www.links.cruentodraco.de/?style=tgg&fromApp='+ String.toLowerCase(platform) +'" class="btn btn-outline btn-block" role="button" target="_blank"><i class="fas fa-link">&nbsp;</i>Cooler Stuff auch Links genannt</a>'
+        htmlLinkBtn =  '<a href="https://www.links.cruentodraco.de/?style=tgg&fromApp='+ String.toLowerCase(platform) +'&homepage=true" class="btn btn-outline btn-block" role="button" target="_blank"><i class="fas fa-link">&nbsp;</i>Cooler Stuff auch Links genannt</a>'
     } else{
-        htmlLinkBtn =  '<a href="https://www.links.cruentodraco.de/?style=tgg" class="btn btn-outline btn-block" role="button" target="_blank"><i class="fas fa-link">&nbsp;</i>Cooler Stuff auch Links genannt</a>'
+        htmlLinkBtn =  '<a href="https://www.links.cruentodraco.de/?style=tgg&homepage=true" class="btn btn-outline btn-block" role="button" target="_blank"><i class="fas fa-link">&nbsp;</i>Cooler Stuff auch Links genannt</a>'
     }
     document.getElementById("link-btn").innerHTML = htmlLinkBtn;
 }
