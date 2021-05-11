@@ -32,6 +32,12 @@ body{
 @media (max-width: 479px) {
 	.footer{
     	margin-top: 35% !important;
+    }   
+    .headerImage{
+        width: 330px !important;
+        height: 110px !important;
+        padding: 0 !important;
+        background-image: url(images/TitleImageSmall.jpg) !important;
     }
 }
 
@@ -43,6 +49,7 @@ body{
     width: 1110px;
     height: 250px; 
     padding: 0 70px;
+    background-image: url(images/TitleImageBig.jpg);
 }
 
 .profile{
