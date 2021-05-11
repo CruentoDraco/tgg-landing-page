@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(48, 52, 54);
+}
+
+.profileImage{
+    border-radius: 50%;
+}
+
+.mgt{
+    margin-top: 19px;
+}
+  
+.copyright{
+    text-align: center;
+    color: white;
+}
+
+.footer{
+	margin-top: 5% !important;
+    margin-bottom: 10px;					
+}
+
+@media (max-width: 479px) {
+	.footer{
+    	margin-top: 35% !important;
+    }
+}
+
+.name{
+    color: #800080;
+}
+
+.wip{
+    color: red;
+    text-align: center;
+}
