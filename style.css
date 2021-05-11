@@ -1,9 +1,11 @@
 body{
-    background-color: rgb(48, 52, 54);
+    background-color: rgb(72, 78, 81);
 }
 
 .profileImage{
     border-radius: 50%;
+    width: 75px; 
+    height: 75px;
 }
 
 .mgt{
@@ -13,6 +15,13 @@ body{
 .copyright{
     text-align: center;
     color: white;
+}
+.pd-right-0{
+    padding-right:0;
+}
+
+.pd-left-0{
+    padding-left:0;
 }
 
 .footer{
@@ -30,7 +39,39 @@ body{
     color: #800080;
 }
 
-.wip{
-    color: red;
+.headerImage{
+    width: 1110px;
+    height: 250px; 
+    padding: 0 70px;
+}
+
+.profile{
     text-align: center;
+}
+
+.text{
+    color:white;
+    text-align: center;
+}
+
+.profileText{
+    color:white;
+}
+
+.btn-outline {
+    border-color: #800080;
+    color: #800080;
+}
+    
+.btn-outline:hover {
+    background: #800080;
+    color: white;
+}
+
+.footerline{
+    background-color:#800080
+}
+
+.profiles{
+    border: #800080 2px solid
 }
