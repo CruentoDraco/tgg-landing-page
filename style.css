@@ -31,20 +31,21 @@ body{
     	margin-top: 35% !important;
     } 
     
-    .iframe{
+    .home{
         height: 881px !important;
     }
     
-    .headerImage{
-        width: 330px !important;
-        height: 110px !important;
-        padding: 0 !important;
-        background-image: url(images/TitleImageSmall.jpg) !important;
+    .about{
+        height: 1426px !important;
     }
 }
 
 @media (max-height: 479px) {    
-    .iframe{
+    .home{
+        height: 1071px !important;
+    }
+
+    .about{
         height: 1071px !important;
     }
 }
