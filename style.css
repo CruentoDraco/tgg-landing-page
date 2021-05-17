@@ -2,10 +2,8 @@ body{
     background-color: white;
 }
 
-.profileImage{
+.brand{
     border-radius: 50%;
-    width: 75px; 
-    height: 75px;
 }
 
 .mgt{
@@ -31,7 +29,12 @@ body{
 @media (max-width: 479px) {
 	.footer{
     	margin-top: 35% !important;
-    }   
+    } 
+    
+    .iframe{
+        height: 881px !important;
+    }
+    
     .headerImage{
         width: 330px !important;
         height: 110px !important;
@@ -40,23 +43,14 @@ body{
     }
 }
 
+@media (max-height: 479px) {    
+    .iframe{
+        height: 1071px !important;
+    }
+}
+
 .name{
     color: #800080;
-}
-
-.headerImage{
-    width: 1110px;
-    height: 250px; 
-    padding: 0 70px;
-    background-image: url(images/TitleImageBig.jpg);
-}
-
-.profile{
-    text-align: center;
-}
-
-.text{
-    text-align: center;
 }
 
 .btn-outline {
@@ -73,6 +67,23 @@ body{
     background-color:#800080
 }
 
-.profiles{
-    border: #800080 2px solid
+nav .navbar-nav li a{
+    color: #800080 !important;
 }
+
+nav .navbar-nav .active a {
+    background-color: #800080 !important;
+    color: white !important;
+}
+
+.nav-item a:hover {
+    background-color: #800080 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.navbar{
+    border-bottom: #800080 2px solid;
+    padding: 0 5px;
+}
+

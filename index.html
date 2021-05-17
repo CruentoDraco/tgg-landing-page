@@ -9,158 +9,52 @@
         content="HomePage for TheGangGang | Developed By - CruentoDraco"
     />  
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="scripts/script.js"></script> 
     <script>
         $('document').ready(function(){
             setPage();
-            var embed = new Twitch.Embed("twitch-embed", {
-                width: "100%",
-                height: 480,
-                channel: "theganggangoffical",
-                layout: "video-with-chat",
-                autoplay: true,
-                muted: true
-            });
-            embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
-            var player = embed.getPlayer();
-            player.play();
-      });
         });
     </script> 
   	<title>TheGangGang | Homepage</title>
 	<link id="stylesheet" rel="stylesheet" href="style.css">
 </head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light navbar-expand-md">
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <img
+                class="brand"
+                src="images/logo.jpg"
+                height="60"
+                alt=""
+                loading="lazy"
+            />
+          </a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="navbar-nav">
+                <li id="home" class="nav-item active"><a href="?site=home" class="nav-link btn">Home</a></li>
+                <li id="about" class="nav-item"><a href="?site=about" class="nav-link btn">About</a></li>
+                <li class="nav-item"><a href="https://www.links.cruentodraco.de/?style=tgg&homepage=true" target="_blank" class="nav-link btn">Find/Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <div class="col-md-12">&nbsp;</div>
+    <!-- Content -->
+    <div class="flex-container" style=" padding: 0 20px">
+        <iframe id="view" class="responsive-iframe iframe" src="includes/home.html" style="width: 100%; height: 600px;">
 
-<body class="body">
-    <div class="container"> 
-        <div id="header">
-            <img src="images/TitleImage.jpg" class="headerImage">
-        </div>
+        </iframe>
     </div>
-    <div class="container">
-        <div id="main"> 
-            <div class="row">
-                <div class="text col-md-12">
-                    <span>
-                        <br>Moin, Servus oder ganz schlicht Hey. <br>
-                        Wie du schon im Bild oben bestimmt gesehen hast bist du hier auf der Page von <span class="name"> TheGangGang </span> gelandet <br>
-                        oder besser gesagt bei <span class="name">4 bescheuerten, komplett durchgeknallten Idioten </span> ^_^ .<br> <br>
-                    </span>
-                    <span>
-                        Und du hast sicherlich auch erkannt was wir hier so machen oder? oder?. <br>
-                        Naja falls nicht, hier die Kurzfassung.<br> <br>
-                    </span>
-                    <span>
-                        Wir machen alles mögliche. Hauptsache es wird bescheuert und Lustig. <br>
-                        Aber vorallem liebe wir Videogames. <br> <br>
-                    </span>
-                    <span>
-                        Jetzt fragst du dich bestimmt wer  hinter TheGangGang steckt Richtig?.<br>
-                        Nun gut ich werde es dir verraten :) <br><br>
-                    </span>
-                </div>
-                <div class="profiles col-md-12">
-                    <div class="row">
-                        <div class="col-md-12">&nbsp;</div>
-                        <div class="profile col-md-12">
-                            <img src="images/logo.jpg" class="profileImage" ><br>
-                                <span class="name">
-                                    TheGangGang <br>
-                                </span>
-                                <span class="profileText">
-                                    oder auch bekannt als 
-                                </span> 
-                        </div>
-                        <div class="col-md-12">&nbsp;</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="profile col-md-3" style="text-align: center;">
-                                    <a href="https://instagram.com/CruentoDraco">
-                                        <img src="images/profileImages/cruentoDraco.jpg" class="profileImage" ><br>
-                                        <span class="name">
-                                            CruentoDraco <br>
-                                        </span>
-                                        <span class="profileText">
-                                            aka <br>
-                                        </span> 
-                                        <span class=name>
-                                            Rene
-                                        </span>                        
-                                    </a>
-                                </div>
-                                <div class="profile col-md-3" style="text-align: center;">
-                                    <a href="https://www.instagram.com/void.zeuszz">
-                                        <img src="images/profileImages/zeus.jpg" class="profileImage" ><br>
-                                        <span class="name">
-                                            Void ZeusZz <br>
-                                        </span>
-                                        <span class="profileText">
-                                            aka <br>
-                                        </span> 
-                                        <span class="name">
-                                            Erik
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="profile col-md-3" style="text-align: center;">
-                                    <a href="https://www.instagram.com/fxbioo/">
-                                        <img src="images/profileImages/kreuch.jpg" class="profileImage" ><br>
-                                        <span class="name">
-                                            Kreuch <br>
-                                        </span>
-                                        <span class="profileText">
-                                            aka <br>
-                                        </span> 
-                                        <span class="name">
-                                            Fabio
-                                        </span>                            
-                                    </a>
-                                </div>
-                                <div class="profile col-md-3" style="text-align: center;">
-                                    <a href="https://www.instagram.com/void_hypnozz/">
-                                        <img src="images/profileImages/hypno.jpg" class="profileImage" ><br>
-                                        <span class="name">
-                                            Void HypnoZz <br>
-                                        </span>
-                                        <span class="profileText">
-                                            aka <br>
-                                        </span> 
-                                        <span class="name">
-                                            Domi
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="col-md-12">&nbsp;</div>
-                <div id="link-btn" class="col-md-12"></div>
-                </div>
-            </div>
-	    </div>
-    </div>
-    <div class="flex-container">
-        <div class="col-md-12">&nbsp;</div>
-        <div id="stream" class="col-md-12">
-            <div class="row">
-                <div class="text col-md-12">
-                    Und falls du kein Twitter oder Instagram hast, dann kannst du gerne hier ab und zu vorbeischauen den hier werden Streams ebenfalls angekündigt ;)
-                </div>
-                <div class="col-md-12">&nbsp;</div>
-                <div class="col-md-12">
-                    <div id="twitch-embed"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="flex-container">
+    <!-- Content -->
+    <!-- Footer -->
+    <footer class="flex-container">
         <div id="footer" class="footer mt-5">
             <hr class="footerline"/>
             <span class="copyright">
@@ -170,7 +64,7 @@
                 </h6> 
             </span>
         </div>
-    </div>
+    </footer>
+    <!-- Footer -->
 </body>
-  
 </html>
