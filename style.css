@@ -26,27 +26,27 @@ body{
     margin-bottom: 10px;					
 }
 
-@media (max-width: 479px) {
+@media only screen and (max-width: 479px) {
 	.footer{
     	margin-top: 35% !important;
     } 
     
     .home{
-        height: 881px !important;
+        height: 1196px !important;
     }
     
     .about{
-        height: 1426px !important;
+        height: 1457px !important;
     }
 }
 
-@media (max-height: 479px) {    
+@media only screen and (max-height: 479px) {    
     .home{
-        height: 1071px !important;
+        height: 1600px !important;
     }
 
     .about{
-        height: 1071px !important;
+        height: 1391px !important;
     }
 }
 

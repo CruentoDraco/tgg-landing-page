@@ -9,7 +9,7 @@
                 OPNAL = only Player no Annoucement Live
                 PWA = Player with Annoucement
             */ 
-            mode = "OPNA";
+            mode = "PWA";
             $('document').ready(function(){
                 switch(mode){
                     case "OPNAL":
@@ -17,9 +17,7 @@
                     break;
                     case "PWA":
                         document.getElementById("title").innerHTML ="Guck mal eine Stream Ankündigung kam herein :)";
-                        $("#twitch").removeClass("col-md-12");
-                        $("#twitch").addClass("col-md-8");
-                        $("#stream-announcement").removeClass("none");
+                        $("#stream-announcements").removeClass("none");
                     break;
                 }
                 var embed = new Twitch.Embed("twitch-embed", {
@@ -38,13 +36,21 @@
         </script>
         <style>
             @media only screen and (max-width : 479px) {    
-                .announcement-image{
+                #stream-announcements{
+                    margin-top: 5px;
+                }
+                
+                 #sunday{
                     margin-top: 5px;
                 }
             }
 
             @media only screen and (max-width: 740px) {
-                .announcement-image{
+                #stream-announcements{
+                    margin-top: 5px;
+                }
+
+                #sunday{
                     margin-top: 5px;
                 }
             }
@@ -70,8 +76,16 @@
                     <div id="twitch" class="col-md-12">
                         <div id="twitch-embed"></div>
                     </div>
-                    <div id="stream-announcement" class="col-md-4 none announcement-image" style="text-align: center;">
-                        <img src="../images/announcement.png" style=" width: 100%; max-width: 500px; max-height: 500px; height: auto;">
+                    <div class="col-md-12">&nbsp;</div>
+                    <div id="stream-announcements" class="col-md-12 none" style="text-align: center;">
+                        <div class="row">
+                            <div id="saturday" class="col-md-6">
+                                <img src="../images/announcements/SASaturday.png" style=" width: 100%; max-width: 500px; max-height: 500px; height: auto;">
+                            </div>
+                            <div id="sunday" class="col-md-6">
+                                <img src="../images/announcements/SASunday.png" style=" width: 100%; max-width: 500px; max-height: 500px; height: auto;">
+                            </div>
+                        </div>
                     </div>
                 </div>                
             </div>
