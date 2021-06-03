@@ -8,7 +8,7 @@
         <title>TheGangGang</title>
         <script>
             twitchHighlights = {
-                0: {"link": "https://player.twitch.tv/?enableExtensions=true&muted=false&parent=twitch.tv&player=popout&t=0h0m2s&video=1032771213&volume=0"},
+                0: {"link": "https://www.twitch.tv/videos/1032510989"},
                 1: {"link": "https://player.twitch.tv/?enableExtensions=true&muted=false&parent=twitch.tv&player=popout&t=0h16m49s&video=1032510989&volume=0" },
                 
             }
@@ -36,12 +36,13 @@
                 });
                 switch (mode){
                     case "Live":
-                    $('#twitch-embed').show();
+                        $('#twitch-embed').show();
                     break;
                     case "NotLive":
-                        $('#twitch-highlight').show();
+                        $('#twitch-embed').show();
+                        /*$('#twitch-highlight').show();
                         var i = Math.floor(Math.random() * 2);
-                        document.getElementById("twitch-highlight").setAttribute("src", twitchHighlights[i].link);
+                        document.getElementById("twitch-highlight").setAttribute("src", twitchHighlights[i].link);*/
                     break;
                 }
             });
@@ -63,7 +64,7 @@
             <div class="card-body">
                 <h5 class="card-title"> Twitch</h5>
                 <div id="twitch-embed" style="display:none;"></div>
-                <iframe id="twitch-highlight" width="100%" height="750" style="display:none;"></iframe>            
+                <video id="twitch-highlight" width="100%" height="750" style="display:none;"></video>            
             </div>
         </div>
         <div class="col-md-12">&nbsp;</div>
