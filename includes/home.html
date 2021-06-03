@@ -1,28 +1,23 @@
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#343a40" />
+        <meta name="description" content="Home of TheGangGang"/>
+        <meta name="copyright" content="TheGangGang" />
+        <title>TheGangGang</title>
         <script>
-            /*
-                OPNA = only Player no Annoucement
-                OPNAL = only Player no Annoucement Live
-                PWA = Player with Annoucement
-            */ 
-            mode = "OPNA";
+            twitchHighlights = {
+                0: {"link": "https://player.twitch.tv/?enableExtensions=true&muted=false&parent=twitch.tv&player=popout&t=0h0m2s&video=1032771213&volume=0"},
+                1: {"link": "https://player.twitch.tv/?enableExtensions=true&muted=false&parent=twitch.tv&player=popout&t=0h16m49s&video=1032510989&volume=0" },
+                
+            }
+            //Live or NotLive
+            var mode ="NotLive";
             $('document').ready(function(){
-                switch(mode){
-                    case "OPNAL":
-                        document.getElementById("title").innerHTML ="Jetzt Live !!";
-                    break;
-                    case "PWA":
-                        document.getElementById("title").innerHTML ="Guck mal eine Stream Ankündigung kam herein :)";
-                        $("#stream-announcements").removeClass("none");
-                    break;
-                }
                 var embed = new Twitch.Embed("twitch-embed", {
                     width: "100%",
-                    height: 500,
+                    height: 750,
                     channel: "theganggangoffical",
                     layout: "video-with-chat",
                     autoplay: true,
@@ -32,62 +27,56 @@
                     var player = embed.getPlayer();
                     player.play();
                 });
+                var channelID = "UCiUoU8QWGiJWw9ZyZqsC5vA";
+                var reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
+                $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
+                    var link = data.items[0].link;
+                    var id = link.substr(link.indexOf("=")+1);
+                    $("#youtube_video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
+                });
+                switch (mode){
+                    case "Live":
+                    $('#twitch-embed').show();
+                    break;
+                    case "NotLive":
+                        $('#twitch-highlight').show();
+                        var i = Math.floor(Math.random() * 2);
+                        document.getElementById("twitch-highlight").setAttribute("src", twitchHighlights[i].link);
+                    break;
+                }
             });
         </script>
-        <style>
-            @media only screen and (max-width : 479px) {    
-                #stream-announcements{
-                    margin-top: 5px;
-                }
-                
-                 #sunday{
-                    margin-top: 5px;
-                }
-            }
-
-            @media only screen and (max-width: 740px) {
-                #stream-announcements{
-                    margin-top: 5px;
-                }
-
-                #sunday{
-                    margin-top: 5px;
-                }
-            }
-            
-            .none{
-                display: none;
-            }
-
-            .card{
-                border-color: #800080;
-            }
-
-            .card-title{
-                color: #800080;
-            }
-        </style>
     </head>
+    <style>
+        .none{
+            display: none;
+        }
+        .card{
+            border-color: #800080;
+        }
+        .card-title{
+            color: #800080;
+        }
+    </style>
     <body>
         <div class="card">
             <div class="card-body">
-                <h5 id="title" class="card-title"></h5>
-                <div class="row">
-                    <div id="twitch" class="col-md-12">
-                        <div id="twitch-embed"></div>
-                    </div>
-                    <div class="col-md-12">&nbsp;</div>
-                    <div id="stream-announcements" class="col-md-12 none" style="text-align: center;">
-                        <div class="row">
-                            <div id="saturday" class="col-md-6">
-                                <img src="../images/announcements/SASaturday.png" style=" width: 100%; max-width: 500px; max-height: 500px; height: auto;">
-                            </div>
-                            <div id="sunday" class="col-md-6">
-                                <img src="../images/announcements/SASunday.png" style=" width: 100%; max-width: 500px; max-height: 500px; height: auto;">
-                            </div>
-                        </div>
-                    </div>
-                </div>                
+                <h5 class="card-title"> Twitch</h5>
+                <div id="twitch-embed" style="display:none;"></div>
+                <iframe id="twitch-highlight" width="100%" height="750" style="display:none;"></iframe>            
+            </div>
+        </div>
+        <div class="col-md-12">&nbsp;</div>
+        <!--<div class="card">
+            <div class="card-body">
+                <h5 class="card-title"> Stream Ankündigungen</h5>          
+            </div>
+        </div>
+        <div class="col-md-12">&nbsp;</div>-->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"> Youtube</h5>
+                <iframe id="youtube_video" width="100%" height="750" frameborder="0" allowfullscreen></iframe>          
             </div>
         </div>
     </body>
