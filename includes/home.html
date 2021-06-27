@@ -8,44 +8,98 @@
         <title>TheGangGang</title>
         <script>
             twitchHighlights = {
-                0: {"link": "https://www.twitch.tv/videos/1032510989"},
-                1: {"link": "https://player.twitch.tv/?enableExtensions=true&muted=false&parent=twitch.tv&player=popout&t=0h16m49s&video=1032510989&volume=0" },
+                0: {"vidID": "1032771213"},
+                1: {"vidID": "1032510989" },
+                2: {"vidID": "1069685661" },
+                3: {"vidID": "1069686182" },
+                
                 
             }
+            $("#twitch-embed").show();
             //Live or NotLive
             var mode ="NotLive";
+            var embed = null;
             $('document').ready(function(){
-                var embed = new Twitch.Embed("twitch-embed", {
-                    width: "100%",
-                    height: 750,
-                    channel: "theganggangoffical",
-                    layout: "video-with-chat",
-                    autoplay: true,
-                    muted: true
-                });
+                switch (mode){
+                    case "Live":
+                        embed = new Twitch.Embed("twitch-embed", {
+                            width: "100%",
+                            height: 750,
+                            channel: "theganggangoffical",
+                            layout: "video-with-chat",
+                            autoplay: true,
+                            muted: true
+                        });
+                    break;
+                    case "NotLive":
+                        var id = twitchHighlights[Math.floor(Math.random() * 4)].vidID;
+                        var minute = Math.floor(Math.random() * 60);
+                        if(minute < 6){
+                            minute = 6;
+                        }
+                        var time = "0h" + minute + "m0s"
+                        console.log(time);
+                        embed = new Twitch.Embed("twitch-embed", {
+                            width: "100%",
+                            height: 750,
+                            video: id,
+                            layout: "video-with-chat",
+                            autoplay: true,
+                            muted: true,
+                            time: time
+                        });
+                    break;
+                }
                 embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
                     var player = embed.getPlayer();
                     player.play();
                 });
+                setYoutubePlayer();
+                
+
+            });
+
+            function setYoutubePlayer(){
                 var channelID = "UCiUoU8QWGiJWw9ZyZqsC5vA";
                 var reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
                 $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
                     var link = data.items[0].link;
                     var id = link.substr(link.indexOf("=")+1);
-                    $("#youtube_video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
+                    $("#youtube_video").attr("src","https://youtube.com/embed/"+id + "?controls=1&showinfo=0&rel=0");
                 });
-                switch (mode){
-                    case "Live":
-                        $('#twitch-embed').show();
-                    break;
-                    case "NotLive":
-                        $('#twitch-embed').show();
-                        /*$('#twitch-highlight').show();
-                        var i = Math.floor(Math.random() * 2);
-                        document.getElementById("twitch-highlight").setAttribute("src", twitchHighlights[i].link);*/
-                    break;
+            }
+
+            function switchView(showView, hideView){
+                switch(showView){
+                    case "#twitch-embed":
+                        $("#youtube_video").attr("src","");
+                        embed.play();
+                        $("#youtube").hide();
+                        $("#youtube"+"-card").removeClass('active-home-nav');
+                        $("#news").hide();
+                        $("#news"+"-card").removeClass('active-home-nav');
+                        break;
+                    case "#youtube":
+                        setYoutubePlayer();
+                        embed.pause();
+                        $("#twitch-embed").hide();
+                        $("#twitch-embed"+"-card").removeClass('active-home-nav');
+                        $("#news").hide();
+                        $("#news"+"-card").removeClass('active-home-nav');
+                        break;
+                    case "#news":
+                        embed.pause();
+                        $("#youtube_video").attr("src","");
+                        $("#youtube").hide();
+                        $("#youtube"+"-card").removeClass('active-home-nav');
+                        $("#twitch-embed").hide();
+                        $("#twitch-embed"+"-card").removeClass('active-home-nav');
+                        break;
                 }
-            });
+                $(showView).show();
+                $(showView+"-card").addClass('active-home-nav');
+                
+            }
         </script>
     </head>
     <style>
@@ -53,31 +107,181 @@
             display: none;
         }
         .card{
-            border-color: #800080;
+            transition: transform 1s, border-top 1s;
+            text-align: center;
+            border-radius: 0% !important;
+            opacity: 0.8;
+            margin-top: 4px;
         }
+
+        .card:hover{
+            transition: transform 1s, border-top 1s;
+            border-top: 5px solid #800080;
+            z-index: 1;
+            transform: scale(1.2);
+            opacity: 1;
+            
+        }
+
+        .pd-5{
+            padding: 5px;
+        }
+
         .card-title{
             color: #800080;
         }
+
+        .active-home-nav{
+            border-top: 5px solid #800080;
+            opacity: 1;
+            margin-top: 0 !important;
+        }
+
+        .homeNav{
+            padding-left: 20px; max-width:1915px;
+        }
+
+        .pd-r{
+            padding-right: 10px;
+        }
+        
+        .pd-l{
+            padding-left: 10px;
+        }
+
+        /* Smartphone Hochformat (Portrait) */
+        @media only screen
+        and (min-width: 320px)
+        and (max-width: 479px) {
+            #twitch-embed-card{
+                margin-bottom: 10px;
+            }
+            
+            #youtube-card{
+                margin-bottom: 10px;
+            }
+
+            .homeNav{
+                padding-left: 12px; 
+                max-width: 372px;
+            }
+            
+            .pd-r{
+                padding-right: 12px;
+            }
+        
+            .pd-l{
+                padding-left: 12px;
+            }
+        }
+
+        /* Smartphone Querformat (Landscape) */
+        @media only screen
+        and (min-width: 480px)
+        and (max-width: 767px) {
+            #twitch-embed-card{
+                margin-bottom: 10px;
+            }
+            
+            #youtube-card{
+                margin-bottom: 10px;
+            }
+
+            .homeNav{
+                padding-left: 12px; 
+                max-width: 752px;
+            }
+            
+            .pd-r{
+                padding-right: 12px;
+            }
+        
+            .pd-l{
+                padding-left: 12px;
+            }
+        }
+        /* Tablet Hochformat (Portrait) */
+        @media only screen
+        and (min-width: 768px)
+        and (max-width: 991px) {
+            .homeNav{
+                padding-left: 12px; 
+                max-width: 780px;
+            }
+            
+            .pd-r{
+                padding-right: 12px;
+                min-width: 50%;
+            }
+        
+            .pd-l{
+                padding-left: 12px;
+                min-width: 50%;
+            }
+        }
+
+        /* Tablet Querformat (Landscape) - PC mit geringer Auflösung */
+        @media only screen
+        and (min-width: 992px)
+        and (max-width: 1199px) {
+            .homeNav{
+                padding-left: 12px; 
+                max-width: 780px;
+            }
+            
+            .pd-r{
+                padding-right: 12px;
+                min-width: 50%;
+            }
+        
+            .pd-l{
+                padding-left: 12px;
+                min-width: 50%;
+            }
+        }
     </style>
     <body>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"> Twitch</h5>
-                <div id="twitch-embed" style="display:none;"></div>
-                <video id="twitch-highlight" width="100%" height="750" style="display:none;"></video>            
+        <div col-md-12>&nbsp;</div>
+        <div id="twitch-embed" style="display:none;"></div>
+        <div id="youtube" style="display:none;"><iframe id="youtube_video" width="100%" height="750" frameborder="0" allowfullscreen></iframe></div>
+        <div id="news" style="display:none;">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">&nbsp;</div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <img src="images/announcements/SA1.png" style="width:75%; height: auto;">
+                    </div>
+                    <div class="col-md-4">&nbsp;</div>
+                </div>
             </div>
+            <div class="col-md-12">&nbsp;</div>
         </div>
-        <div class="col-md-12">&nbsp;</div>
-        <!--<div class="card">
-            <div class="card-body">
-                <h5 class="card-title"> Stream Ankündigungen</h5>          
-            </div>
-        </div>
-        <div class="col-md-12">&nbsp;</div>-->
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title"> Youtube</h5>
-                <iframe id="youtube_video" width="100%" height="750" frameborder="0" allowfullscreen></iframe>          
+        <div style="background-color: black; margin-top:-6px;">
+            <div class="col-md-12">
+                <div class="row homeNav">
+                    <div class="col-md-1 pd-r">
+                        <div id="twitch-embed-card" class="card active-home-nav" onclick="switchView('#twitch-embed')">
+                            <div class="card-body">
+                                <h5 class="card-title">Twitch</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 pd-l pd-r">
+                        <div id="youtube-card"  class="card" onclick="switchView('#youtube')">
+                            <div class="card-body">
+                                <h5 class="card-title">Youtube</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 pd-l" style="display:none;">
+                        <div id="news-card"  class="card" onclick="switchView('#news')">
+                            <div class="card-body">
+                                <h5 class="card-title">News</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="padding: 0;"></div>  
+                </div>
             </div>
         </div>
     </body>
